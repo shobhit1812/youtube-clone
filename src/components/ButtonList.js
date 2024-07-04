@@ -3,7 +3,7 @@ import { list } from "../utils/helper";
 
 const ButtonList = () => {
   return (
-    <div className="flex px-4 overflow-x-scroll ">
+    <div className="flex">
       {list.map((item, index) => {
         return <Button key={index} name={item} />;
       })}
