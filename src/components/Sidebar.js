@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 
 const currentYear = new Date().getFullYear();
-console.log(currentYear);
 
 const Sidebar = () => {
   const isMenuOpen = useSelector((store) => store.side.isMenuOpen);
