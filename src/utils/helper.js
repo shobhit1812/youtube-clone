@@ -1,0 +1,15 @@
+export const list = [
+  "All",
+  "Game",
+  "Live",
+  "Kapil Sharma Show",
+  "Tarak Mehta Ka Oolta Chasma",
+  "bgmi",
+  "Viper",
+  "Music",
+  "Cricket",
+  "Football",
+  "UFC",
+  "Yoga",
+  "Laptops",
+];
