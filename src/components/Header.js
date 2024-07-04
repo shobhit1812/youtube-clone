@@ -4,8 +4,11 @@ import { MdOutlineVideoCall } from "react-icons/md";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { FaRegUserCircle } from "react-icons/fa";
 
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/sidebarSlice";
+import { useEffect, useState } from "react";
+import { YOUTUBE_SEARCH_API } from "../utils/constants";
+import { cacheResults } from "../utils/searchSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -13,6 +16,39 @@ const Header = () => {
   const handleToggleMenu = () => {
     dispatch(toggleMenu());
   };
+
+  const [searchQuery, setSearchQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+
+  const searchCache = useSelector((store) => store.search);
+
+  const getSearchSuggestions = async () => {
+    const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
+    const json = await data.json();
+    setSuggestions(json[1]);
+    dispatch(
+      cacheResults({
+        [searchQuery]: json[1],
+      })
+    );
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (searchCache[searchQuery]) {
+        setSuggestions(searchCache[searchQuery]);
+      } else {
+        getSearchSuggestions();
+      }
+    }, 200);
+
+    return () => {
+      clearTimeout(timer);
+    };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchQuery]);
 
   return (
     <div>
@@ -35,12 +71,27 @@ const Header = () => {
             className={`border border-black rounded-l-full w-[550px] p-1`}
             name="text"
             placeholder="Search"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onFocus={() => setShowSuggestions(true)}
+            onBlur={() => setShowSuggestions(false)}
           />
           <button
-            className={`p-2 w-10 flex items-center justify-center border border-black rounded-r-full `}
+            className={`p-2 w-10 flex items-center justify-center border border-black rounded-r-full hover:bg-gray-200`}
           >
             <IoIosSearch />
           </button>
+          {showSuggestions && (
+            <div className="absolute top-8 left-[250px] w-[550px] shadow-lg border rounded-md mt-1 z-10 bg-white text-black border-gray-300">
+              <ul>
+                {suggestions.map((s) => (
+                  <li className="p-2  cursor-pointer hover:bg-gray-200" key={s}>
+                    🔍 {s}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
         <div className="flex col-span-1 items-center justify-end space-x-4">
           <MdOutlineVideoCall className="text-3xl" />
