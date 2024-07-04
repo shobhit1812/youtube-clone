@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const currentYear = new Date().getFullYear();
 
@@ -10,7 +11,9 @@ const Sidebar = () => {
   return (
     <div className="sticky top-16 p-4 w-[196px] h-[calc(100vh-4rem)] overflow-y-auto scrollbar-webkit">
       <div className="space-y-4 mb-5">
-        <h1 className="font-bold text-lg">Home</h1>
+        <h1 className="font-bold text-lg">
+          <Link to="/">Home</Link>
+        </h1>
         <h1 className="font-bold text-lg">Shorts</h1>
         <h1 className="font-bold text-lg">Subscriptions</h1>
         <h1 className="font-bold text-lg">YouTube Music</h1>

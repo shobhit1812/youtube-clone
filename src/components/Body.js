@@ -1,5 +1,6 @@
 import Sidebar from "./Sidebar";
-import MainContainer from "./MainContainer";
+
+import { Outlet } from "react-router-dom";
 
 const Body = () => {
   return (
@@ -8,7 +9,7 @@ const Body = () => {
         <Sidebar />
       </div>
       <div className="flex-1 p-4">
-        <MainContainer />
+        <Outlet />
       </div>
     </div>
   );
