@@ -3,7 +3,7 @@ import Body from "./components/Body";
 
 const App = () => {
   return (
-    <div className="font-poppins">
+    <div className="font-poppins min-h-screen">
       <Header />
       <Body />
     </div>

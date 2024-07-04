@@ -8,7 +8,7 @@ const Sidebar = () => {
   if (!isMenuOpen) return null;
 
   return (
-    <div className="sticky top-16 p-4 w-[196px] h-[calc(100vh-4rem)] overflow-y-auto">
+    <div className="sticky top-16 p-4 w-[196px] h-[calc(100vh-4rem)] overflow-y-auto scrollbar-webkit">
       <div className="space-y-4 mb-5">
         <h1 className="font-bold text-lg">Home</h1>
         <h1 className="font-bold text-lg">Shorts</h1>
