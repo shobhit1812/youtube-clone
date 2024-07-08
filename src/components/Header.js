@@ -33,8 +33,8 @@ const Header = () => {
           [searchQuery]: json[1],
         })
       );
-    } catch {
-      console.log("error");
+    } catch (error) {
+      console.error("An error occurred:", error);
     }
   };
 
