@@ -24,14 +24,18 @@ const Header = () => {
   const searchCache = useSelector((store) => store.search);
 
   const getSearchSuggestions = async () => {
-    const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
-    const json = await data.json();
-    setSuggestions(json[1]);
-    dispatch(
-      cacheResults({
-        [searchQuery]: json[1],
-      })
-    );
+    try {
+      const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
+      const json = await data.json();
+      setSuggestions(json[1]);
+      dispatch(
+        cacheResults({
+          [searchQuery]: json[1],
+        })
+      );
+    } catch {
+      console.log("error");
+    }
   };
 
   useEffect(() => {
