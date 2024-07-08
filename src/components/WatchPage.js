@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { closeMenu } from "../utils/sidebarSlice";
 import LiveChat from "./LiveChat";
 import CommentsContainer from "./CommentsContainer";
+import Comment from "./comment/Comment";
 
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
@@ -35,6 +36,7 @@ const WatchPage = () => {
           </div>
         </div>
       </div>
+      <Comment />
       <CommentsContainer />
     </>
   );
