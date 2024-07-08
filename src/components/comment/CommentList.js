@@ -75,6 +75,7 @@ const CommentList = () => {
                 type="text"
                 value={replyData[index]?.replyText}
                 onChange={(event) => handleReplyChange(index, event)}
+                placeholder="reply"
                 className="border p-2 mr-2"
               />
               <button
