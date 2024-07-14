@@ -16,7 +16,7 @@ const App = () => {
   };
 
   return (
-    <div className="m-5 border border-black font-mono">
+    <div className="m-5 font-mono">
       <h1 className="text-2xl p-2">Comments:</h1>
       <div className="p-2">
         <input

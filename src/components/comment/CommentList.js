@@ -60,7 +60,7 @@ const CommentList = () => {
     <div>
       {commentsList.map((comment, index) => (
         <div key={comment.id || index} className="mb-4">
-          <h1 className="border bg-gray-400 pl-2 text-xl mt-5">
+          <h1 className="border bg-gray-200 pl-2 text-xl mt-5">
             User: {comment.comment}
           </h1>
           <button
