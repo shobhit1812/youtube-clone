@@ -6,9 +6,9 @@ const currentYear = new Date().getFullYear();
 const Sidebar = () => {
   const isMenuOpen = useSelector((store) => store.side.isMenuOpen);
 
-  if (!isMenuOpen) return null;
+  // if (!isMenuOpen) return null;
 
-  return (
+  return !isMenuOpen ? null : (
     <div className="sticky top-16 p-4 w-[196px] h-[calc(100vh-4rem)] overflow-y-auto scrollbar-webkit">
       <div className="space-y-4 mb-5">
         <h1 className="font-bold text-lg">
